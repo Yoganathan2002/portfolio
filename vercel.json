@@ -1,0 +1,9 @@
+{
+  "buildCommand": "astro build",
+  "outputDirectory": "./dist",
+  "devCommand": "astro dev",
+  "framework": "astro",
+  "env": {
+    "NODE_VERSION": "18.x"
+  }
+}

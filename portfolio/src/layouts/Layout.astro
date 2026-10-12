@@ -1,0 +1,89 @@
+---
+import '../styles/globals.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Portfolio', description = 'Professional portfolio' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Paper rolling scroll effect */
+      html {
+        scroll-behavior: smooth;
+      }
+      section {
+        min-height: 100vh;
+        padding: 4rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.25rem;
+        background: #f8fafc;
+        position: relative;
+        overflow: hidden;
+      }
+      section::before {
+        content: '';
+        position: absolute;
+        top: -50px;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.05), transparent);
+        transform: rotateX(60deg);
+        transform-origin: top;
+      }
+      section:nth-child(even) {
+        background: #e2e8f0;
+      }
+      /* Rolling transition */
+      section {
+        animation: rollIn 1s ease both;
+      }
+      @keyframes rollIn {
+        0% {
+          transform: rotateX(90deg);
+          opacity: 0;
+        }
+        100% {
+          transform: rotateX(0deg);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Slot for page content -->
+    <slot />
+
+    <!-- Example sections to demonstrate rolling scroll -->
+    <section id="hero">Hero Section – Intro</section>
+    <section id="skills">Skills Section</section>
+    <section id="experience">Experience Section</section>
+    <section id="projects">Projects Section</section>
+    <section id="contact">Contact Section</section>
+
+    <script>
+      document.addEventListener('astro:page-load', () => {
+        document.documentElement.style.colorScheme = 'light';
+      });
+    </script>
+  </body>
+</html>

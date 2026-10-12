@@ -1,0 +1,78 @@
+---
+const navItems = [
+  { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<nav class="fixed top-6 sm:top-8 left-1/2 -translate-x-1/2 z-50 px-4 sm:px-0">
+  <div class="cellular-card rounded-full px-2 sm:px-3 py-2 flex gap-1 backdrop-blur-md shadow-lg nav-container">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class="group relative px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider nav-link"
+      >
+        <!-- Hover Background with Gradient -->
+        <span class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 -z-10 bg-gradient-to-r from-teal-400 to-orange-400 shadow-lg"></span>
+
+        <!-- Text Color on Hover -->
+        <span class="relative group-hover:text-white transition-colors duration-300">
+          {item.label}
+        </span>
+
+        <!-- Glow Underline -->
+        <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 group-hover:w-6 transition-all duration-300 bg-gradient-to-r from-teal-400 to-orange-400 shadow-md"></span>
+      </a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  /* Slide-down entry animation */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -20px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .nav-container {
+    background-color: rgba(224, 232, 240, 0.9);
+    border: 1px solid var(--color-teal);
+    animation: slideDown 0.6s ease-out 0.2s both;
+  }
+
+  .nav-link {
+    color: var(--color-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animated glow pulse on hover */
+  .nav-link:hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    box-shadow: 0 0 20px rgba(0, 181, 173, 0.6);
+    animation: pulseGlow 1.5s infinite;
+  }
+
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 5px rgba(0, 181, 173, 0.4); }
+    50% { box-shadow: 0 0 20px rgba(245, 166, 35, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(0, 181, 173, 0.4); }
+  }
+
+  @media (max-width: 640px) {
+    nav {
+      top: 1rem;
+    }
+  }
+</style>

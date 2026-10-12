@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import { Navbar } from '../components/Navbar';
+import { BackgroundAnimation } from '../components/BackgroundAnimation';
+import { VaporEffect } from '../components/VaporEffect';
+import { NavigationHandler } from '../components/NavigationHandler';
+import { Hero } from '../components/Hero';
+import { Skills } from '../components/Skills';
+import { Experience } from '../components/Experience';
+import { Projects } from '../components/Projects';
+import { Contact } from '../components/Contact';
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Yoganathan V - Data Analyst & Backend Engineer. Building scalable data pipelines and analytics solutions." />
+    <meta name="keywords" content="Data Analyst, Backend Engineer, Python, SQL, Power BI, AWS" />
+    <meta name="author" content="Yoganathan V" />
+    <meta property="og:title" content="Yoganathan V - Data Analyst & Backend Engineer" />
+    <meta property="og:description" content="1+ years of professional experience in data analytics and backend systems at IIT Madras Research Park." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Yoganathan V - Data Analyst & Backend Engineer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%232563eb'>Y</text></svg>" />
+  </head>
+  <body class="dark:bg-slate-900 light:bg-white dark:text-slate-100 light:text-slate-900 transition-colors duration-300">
+    <div class="mesh-gradient"></div>
+    <BackgroundAnimation client:load />
+    <VaporEffect client:load />
+    <NavigationHandler client:load />
+
+    <Navbar client:load />
+    <Hero client:load />
+    <Skills client:load />
+    <Experience client:load />
+    <Projects client:load />
+    <Contact client:load />
+
+    <footer class="relative dark:border-t dark:border-slate-700/50 light:border-t light:border-slate-200 dark:bg-slate-900/50 light:bg-slate-50/50 transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-6 py-12 text-center dark:text-slate-400 light:text-slate-600">
+        <p>© 2026 Yoganathan V. Crafted with precision and care.</p>
+      </div>
+    </footer>
+
+    <style is:global>
+      @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+    </style>
+
+    <script is:inline>
+      // Initialize theme immediately before page renders
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+
+        const html = document.documentElement;
+        const body = document.body;
+
+        if (isDark) {
+          html.classList.remove('light');
+          html.classList.add('dark');
+          body.classList.remove('light');
+          body.classList.add('dark');
+        } else {
+          html.classList.remove('dark');
+          html.classList.add('light');
+          body.classList.remove('dark');
+          body.classList.add('light');
+        }
+      })();
+    </script>
+  </body>
+</html>
